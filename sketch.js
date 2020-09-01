@@ -5,31 +5,32 @@ function setup() {
   createCanvas(1600,400);
   
   speed=random(223,321);
-  weight=random(38,52);
+  weight=random(30,52);
   
-  thickness=random(22,53);
+  thickness=random(22,93);
   
   bullet=createSprite(50,200,50,5)
-  bullet.velocityX=speed;
+  bullet.velocityX=6;
   bullet.shapeColor=color(255);
   
-  wall=createSprite(1200,288,thickness,weight/2);
-  wall.shapeColour=color(238,230,230);
+  wall=createSprite(1200,288,thickness,height/2);
+  wall.shapeColour=color(230,230,230);
 }
 
 function draw() {
   background(0); 
-  if(hascollided(bullet,wall))
+
+  if(hasCollided(bullet,wall))
   {
     bullet.velocityX=0;
-    var dmage=0.5=weight=speed=speed/(thickness=thickness=thickness);
+    var damage=0.5+weight+speed+speed/(thickness+thickness+thickness);
     
-    if(dmage>10)
+    if(damage>10)
     {
       wall.shapeColor=color(255,0,0);
     }
     
-    if(dmage<10)
+    if(damage<10)
     {
       wall.shapeColor=color(0,255,0);
     }
@@ -37,11 +38,11 @@ function draw() {
   drawSprites();
 }
 
-function hasCollided(1bullet,1wall)
+function hasCollided(bullet,wall)
 {
-  bulletRightEdge=1bullet.x+1bullet.width;
-  wallLeftEdge=1wall.x;
-  if(bulletRightEdge=wallLeftEdge)
+  bulletRightEdge = bullet.x + bullet . width ;
+  wallLeftEdge = wall.x ;
+  if(bulletRightEdge >= wallLeftEdge)
   {
     return true;
   }
